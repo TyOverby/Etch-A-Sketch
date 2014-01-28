@@ -7,7 +7,7 @@ int cursorY;
 
 void setup() {
   serial = new Serial(this, Serial.list()[0], 9600);
-  size(1024 / 2, 1024 / 2);
+  size(1024 / 2 + 100, 1024 / 2 + 100);
 }
 
 void draw() {
@@ -18,7 +18,7 @@ void draw() {
     int value = serial.read();
     println(value);
     if ((value & 1) == 1) {
-      cursorX = (value ^ 1) * 2;
+      cursorX = width - 100 -(value ^ 1) * 2;
     } else {
       cursorY = value * 2;
     }
